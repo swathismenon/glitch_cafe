@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>The Glitch Café</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+   
+
+  </head>
+  <body>
+    <a-scene background="color: #0a0a0a" play-on-click>
+
+
+      
+      <a-assets>
+        <img id="wallLeft" src="wallLeft.jpg" />
+        <img id="centrePic" src="centre.png" />
+        <img id="floorTexture" src="floor.jpg" />
+        <img id="cyberpunk" src="cyberpunk.jpg" />
+      
+        <a-asset-item id="sashaModel" src="sasha.glb"></a-asset-item>
+        <a-asset-item id="stairsModel" src="stairs.glb"></a-asset-item>
+        <a-asset-item id="counterModel" src="counter.glb"></a-asset-item>
+        <a-asset-item id="stoolsModel" src="stools.glb"></a-asset-item>
+        <a-asset-item id="jukeboxModel" src="jukebox.glb"></a-asset-item>
+        <a-asset-item id="sofaModel" src="sofa.glb"></a-asset-item>
+        <audio id="jukeboxTrack" src="music.mp3" preload="auto"></audio>
+
+       
+
+
+
+      </a-assets>
+      
+      <!-- FRONT WALL -->
+<a-plane 
+src="#cyberpunk"
+width="20" height="7"
+position="0 3.5 9.94"
+rotation="0 180 0"
+material="side: double">
+</a-plane>
+ 
+      <a-gltf-model 
+  src="#sashaModel" 
+  position="-3 0 -8" 
+  scale="2.5 2.5 2.5" 
+  rotation="0 15 0">
+</a-gltf-model>
+
+
+<a-gltf-model 
+  src="#stairsModel" 
+  position="-6 0 4.6" 
+  scale="1.2 1.5 1" 
+  rotation="0 90 0">
+</a-gltf-model>
+
+
+<a-gltf-model 
+  src="counter.glb" 
+  position="0.6 0.5 -8.5" 
+  scale="0.75 0.5 0.5" 
+  rotation="0 0 0">
+</a-gltf-model>
+
+<a-gltf-model 
+  src="#stoolsModel" 
+  position="-8 0 -2" 
+  scale="0.5 0.8 0.5" 
+  rotation="0 110 0">
+</a-gltf-model>
+
+
+<a-gltf-model 
+  id="jukebox"
+  src="#jukeboxModel" 
+  position="7.8 0 -8"
+  rotation="0 35 0"
+  scale="0.05 0.05 0.05"
+  class="clickable">
+</a-gltf-model>
+
+  <a-gltf-model 
+  src="#sofaModel" 
+  position="8 0 -1" 
+  scale="2 2 2" 
+  rotation="0 -70 0">
+</a-gltf-model>
+
+
+      <a-box 
+      position="0 0 0" 
+      width="20" 
+      height="0.1" 
+      depth="20" 
+      material="src: #floorTexture; repeat: 1 1; side: double">
+    </a-box>
+
+    
+    
+
+   
+
+
+
+    
+      <!-- CEILING -->
+      <a-box position="0 7 0" width="20" height="0.1" depth="20" color="#111"></a-box>
+
+      <!-- WALLS -->
+      <a-box position="0 3.5 -10" width="20" height="7" depth="0.1" color="#1a1a1a"></a-box> <!-- Back wall -->
+      <a-box position="0 3.5 10" width="20" height="7" depth="0.1" color="#1a1a1a"></a-box>  <!-- Front wall -->
+      <a-box position="-10 3.5 0" width="0.1" height="7" depth="20" material="src: #wallLeft; repeat: 1 1"></a-box> <!-- Left wall -->
+      <a-box position="10 3.5 0" width="0.1" height="7" depth="20" rotation="0 180 0" material="src: #wallLeft; repeat: 1 1"></a-box>  <!-- Right wall -->
+
+      <!-- NEON LIGHTS -->
+      <a-entity light="type: point; color: #00ffff; intensity: 2.2; distance: 30" position="0 6.5 0"></a-entity>
+      <a-entity light="type: point; color: #ff00ff; intensity: 2.2; distance: 20" position="-4 6 4"></a-entity>
+      <a-entity light="type: point; color: #00ff99; intensity: 1.8; distance: 20" position="4 5 0"></a-entity>
+      <a-entity light="type: ambient; color: #888"></a-entity>
+
+      <!-- WALL -->
+      <a-plane 
+        src="#centrePic"
+        width="20" height="7"
+        position="0 3.5 -9.94"
+        material="side: double">
+      </a-plane>
+
+      <!-- SKY -->
+      <a-sky color="#050505"></a-sky>
+
+      <a-entity id="camera" camera position="0 4 9" rotation="0 180 0" look-controls wasd-controls>
+        <a-entity 
+          cursor="rayOrigin: mouse" 
+          raycaster="objects: .clickable"
+          position="0 0 -1"
+          geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+          material="color: cyan; shader: flat"
+          visible="false">
+        </a-entity>
+      </a-entity>
+
+   
+
+    </a-scene>
+    <script src="script.js"></script>
+
+  </body>
+</html>
